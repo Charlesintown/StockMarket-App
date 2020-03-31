@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Plot from 'react-plotly.js';
 
 const Stocks = () => {
 
@@ -7,7 +8,7 @@ const Stocks = () => {
 
     const fetchStockMarket = () => {
         const API_KEY = `P6C0Q88ZI50BWU1H`;
-        let stockSymbol = `AMZN`;
+        let stockSymbol = `IBM`;
         let fetch_API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stockSymbol}&outputsize=compact&apikey=${API_KEY}`;
 
         fetch(fetch_API).then(response => {
@@ -25,14 +26,24 @@ const Stocks = () => {
 
     useEffect(() => {
        fetchStockMarket()
-    });
+    }, []);
 
     return (
         <>
             <h1>Stock</h1>
             <p>
-                x values: {chartValuesX}
-                y values: {chartValuesY}
+                <Plot
+                    data={[
+                        {
+                            x: chartValuesX,
+                            y: chartValuesY,
+                            type: 'scatter',
+                            mode: 'lines+markers',
+                            marker: {color: 'red'},
+                        }
+                    ]}
+                    layout={{width: 740, height: 480, title: 'A Fancy Plot'}}
+                />
             </p>
 
         </>
