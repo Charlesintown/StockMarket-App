@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Stocks from "./components/Stocks";
 
 function App() {
   return (
     <>
-      </>
+        <Stocks/>
+    </>
   );
 }
 
