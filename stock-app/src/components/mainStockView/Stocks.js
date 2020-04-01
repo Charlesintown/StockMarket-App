@@ -18,9 +18,7 @@ const Stocks = () => {
         fetch(fetch_API).then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
             const dataDaily = data[`Time Series (Daily)`];
-            console.log(dataDaily);
             for(const key in dataDaily) {
                 setChartValuesX(prevState => [...prevState, key]);
                 setChartValuesY(prevState => [...prevState, data[`Time Series (Daily)`][key][`4. close`]])
