@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import Plot from 'react-plotly.js';
-import stockSymbols from "../stocksSymbols/StockSymbols";
+import Plot from '../../../node_modules/react-plotly.js/react-plotly';
+import Form from "../form/Form";
+import PlotView from "../plotView/PlotView";
+import stockSymbols from "../../stocksSymbols/StockSymbols";
 
 const Stocks = () => {
-
-    const inputStock = document.querySelector(".stockInput");
-    const submitStockChange = document.querySelector(".submitStockChange");
 
     const[chartValuesX, setChartValuesX] = useState([]);
     const[chartValuesY, setChartValuesY] = useState([]);
@@ -43,24 +42,8 @@ const Stocks = () => {
     return (
         <>
             <h1>Stock</h1>
-            <p>
-                <Plot
-                    data={[
-                        {
-                            x: chartValuesX,
-                            y: chartValuesY,
-                            type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: 'red'},
-                        }
-                    ]}
-                    layout={{width: 740, height: 480, title: 'A Fancy Plot'}}
-                />
-            </p>
-            <form>
-                <input className={"stockInput"} type={"text"} value={currentStock} onChange={event => setCurrentStock(event.target.value)} />
-                <button onClick={changeStock} type={"submit"} className={"submitStockChange"}>Submit</button>
-            </form>
+            <PlotView xValues={chartValuesX} yValues={chartValuesY}/>
+            <Form current={currentStock} setCurrent={setCurrentStock} changeStock={changeStock}/>
 
         </>
     )
