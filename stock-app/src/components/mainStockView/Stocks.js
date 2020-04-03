@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Plot from '../../../node_modules/react-plotly.js/react-plotly';
-import Form from "../form/Form";
+import StockList from "../stockList/StockList";
 import PlotView from "../plotView/PlotView";
 import stockSymbols from "../../stocksSymbols/StockSymbols";
 
@@ -8,11 +8,11 @@ const Stocks = () => {
 
     const[chartValuesX, setChartValuesX] = useState([]);
     const[chartValuesY, setChartValuesY] = useState([]);
-    const[currentStock, setCurrentStock] = useState("");
+    const[currentStock, setCurrentStock] = useState("AAPL");
+    const[companyName, setCompanyName] = useState("Apple");
 
     const fetchStockMarket = () => {
         const API_KEY = `P6C0Q88ZI50BWU1H`;
-        let stockSymbol = `NKE`;
         let fetch_API = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${currentStock}&outputsize=compact&apikey=${API_KEY}`;
 
         fetch(fetch_API).then(response => {
@@ -26,11 +26,14 @@ const Stocks = () => {
         })
     };
 
-    const changeStock = (e) => {
-        e.preventDefault();
+    const changeStock = () => {
         setChartValuesX(prevState => []);
         setChartValuesY(prevState => []);
         fetchStockMarket();
+    };
+
+    const changeCompanyTitle = (companyName) => {
+        setCompanyName(prevState => companyName);
     };
 
     useEffect(() => {
@@ -40,9 +43,9 @@ const Stocks = () => {
     return (
         <>
             <h1>Stock</h1>
+            <h2>{companyName}</h2>
             <PlotView xValues={chartValuesX} yValues={chartValuesY}/>
-            <Form current={currentStock} setCurrent={setCurrentStock} changeStock={changeStock}/>
-
+            <StockList setCurrentStock={setCurrentStock} changeStock={changeStock} companyName={changeCompanyTitle}/>
         </>
     )
 };

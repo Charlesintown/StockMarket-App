@@ -7,6 +7,7 @@ const PlotView = (props) => {
 
     return (
         <Plot
+
             data={[
                 {
                     x: props.xValues,
