@@ -1,0 +1,23 @@
+@import "variables";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+.container {
+  min-width: 970px;
+  text-align: center;
+
+  @media(max-width: $bp-tablet ) {
+    min-width: 760px;
+  }
+
+  @media(max-width: $bp-phone) {
+    width: 90%;
+  }
+}

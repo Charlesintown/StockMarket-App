@@ -7,6 +7,7 @@ const PlotView = (props) => {
 
     return (
         <Plot
+
             data={[
                 {
                     x: props.xValues,
@@ -16,7 +17,7 @@ const PlotView = (props) => {
                     marker: {color: 'red'},
                 }
             ]}
-            layout={{width: 740, height: 480, title: 'A Fancy Plot'}}
+            layout={{width: 740, height: 480, title: `${props.companyName}`}}
         />
     )
 };
