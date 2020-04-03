@@ -2,22 +2,16 @@
 
 * {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
 body {
   font-family: 'Oswald', sans-serif;
+  text-align: center;
 }
 
 .container {
-  min-width: 970px;
   text-align: center;
+  max-width: 970px;
 
-  @media(max-width: $bp-tablet ) {
-    min-width: 760px;
-  }
-
-  @media(max-width: $bp-phone) {
-    width: 90%;
-  }
 }

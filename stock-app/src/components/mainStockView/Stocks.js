@@ -45,8 +45,10 @@ const Stocks = () => {
             <div className={"container"}>
                 <h1>Stock</h1>
                 <h2>{companyName}</h2>
-                <PlotView xValues={chartValuesX} yValues={chartValuesY} companyName={companyName}/>
-                <StockList setCurrentStock={setCurrentStock} changeStock={changeStock} companyName={changeCompanyTitle}/>
+                <div className={"plot-list-container"}>
+                    <PlotView xValues={chartValuesX} yValues={chartValuesY} companyName={companyName}/>
+                    <StockList setCurrentStock={setCurrentStock} changeStock={changeStock} companyName={changeCompanyTitle}/>
+                </div>
             </div>
         </>
     )

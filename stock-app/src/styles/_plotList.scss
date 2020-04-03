@@ -1,0 +1,27 @@
+.plot-list-container {
+  display: flex;
+  border: 2px solid #dedede;
+
+}
+
+.stock-list {
+  width: 25%;
+  list-style: none;
+  font-size: 1.2rem;
+
+
+  li {
+    cursor: pointer;
+    background-color: #FAF4F0;
+  }
+
+  li:hover {
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.plot-border {
+
+}

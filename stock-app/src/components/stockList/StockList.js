@@ -20,7 +20,7 @@ const StockList = (props) => {
     return (
 
         <>
-            <ul>
+            <ul className={"stock-list"}>
                 {stockTab.map(el => {
                     return (
                         <li onClick={event => chooseCompany(el.symbol, props.setCurrentStock, el.name)} key={el.symbol}>{el.name}</li>
